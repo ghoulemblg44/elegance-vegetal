@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nos Fleurs — le catalogue Elégance Végétal. Bouquets, roses, plantes, fleurs séchées, compositions et cadeaux."
+    />
+    <title>Nos Fleurs — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" id="haut">
+      <nav class="nav" aria-label="Navigation principale">
+        <button
+          class="icon-btn hamburger"
+          type="button"
+          data-open-menu
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="menu-mobile"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a class="logo" href="../index.html">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path
+                d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M16 28V12"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="logo__text">Elégance <em>Végétal</em></span>
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a class="is-active" href="produits.html">Nos fleurs</a></li>
+          <li><a href="produits.html#bouquets">Bouquets</a></li>
+          <li><a href="produits.html#plantes">Plantes</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <button class="icon-btn" type="button" data-open-search aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6" />
+              <path d="M16 16.5 20 20.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+          <a class="icon-btn cart-btn" href="panier.html" aria-label="Panier, 0 article">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6 7h15l-1.5 9h-12L5 4H2"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="9.5" cy="20" r="1.2" fill="currentColor" />
+              <circle cx="17.5" cy="20" r="1.2" fill="currentColor" />
+            </svg>
+            <span class="cart-btn__count" data-cart-count>0</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="drawer-overlay" data-close-menu hidden></div>
+    <aside class="drawer" id="menu-mobile" aria-hidden="true">
+      <div class="drawer__top">
+        <p class="drawer__brand">Menu</p>
+        <button class="icon-btn" type="button" data-close-menu aria-label="Fermer le menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <nav aria-label="Navigation mobile">
+        <ul class="drawer__links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="produits.html">Nos fleurs</a></li>
+          <li><a href="produits.html#bouquets">Bouquets</a></li>
+          <li><a href="produits.html#plantes">Plantes</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="drawer__note">Livraison soignée à Alger et dans les wilayas voisines.</p>
+    </aside>
+
+    <div class="search-overlay" id="recherche" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="search-panel__top">
+          <h2 id="search-title">Rechercher</h2>
+          <button class="icon-btn" type="button" data-close-search aria-label="Fermer la recherche">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <form class="search-form" data-search-form>
+          <label class="sr-only" for="search-input">Rechercher un bouquet, une rose ou une plante</label>
+          <input
+            id="search-input"
+            type="search"
+            name="q"
+            placeholder="Roses, plantes, mariage…"
+            autocomplete="off"
+          />
+          <button class="btn btn--dark" type="submit">Chercher</button>
+        </form>
+        <p class="search-panel__hint">La recherche filtre le catalogue ci-dessous.</p>
+      </div>
+    </div>
+
+    <main id="contenu" data-catalog>
+      <header class="catalog-header">
+        <p class="eyebrow">Catalogue</p>
+        <h1>Nos Fleurs</h1>
+        <p class="catalog-header__lead">
+          Bouquets d'atelier, roses, plantes et compositions — une collection
+          pensée pour l'instant, livrée avec le soin d'un fleuriste d'Alger.
+        </p>
+      </header>
+
+      <section class="catalog-controls" aria-label="Filtrer le catalogue">
+        <div class="filter-track" role="group" aria-label="Catégories">
+          <button class="filter-chip is-active" type="button" data-filter="tous" aria-pressed="true">Tous</button>
+          <button class="filter-chip" type="button" data-filter="Bouquets" aria-pressed="false">Bouquets</button>
+          <button class="filter-chip" type="button" data-filter="Roses" aria-pressed="false">Roses</button>
+          <button class="filter-chip" type="button" data-filter="Plantes" aria-pressed="false">Plantes</button>
+          <button class="filter-chip" type="button" data-filter="Fleurs séchées" aria-pressed="false">Fleurs séchées</button>
+          <button class="filter-chip" type="button" data-filter="Compositions" aria-pressed="false">Compositions</button>
+          <button class="filter-chip" type="button" data-filter="Cadeaux" aria-pressed="false">Cadeaux</button>
+        </div>
+        <div class="catalog-search">
+          <label class="sr-only" for="catalog-search">Rechercher un produit</label>
+          <input
+            id="catalog-search"
+            type="search"
+            placeholder="Rechercher une création…"
+            data-catalog-search
+            autocomplete="off"
+          />
+        </div>
+      </section>
+
+      <p class="catalog-count" data-catalog-count>16 créations</p>
+
+      <div class="section catalog-results">
+        <div class="product-grid" data-product-grid></div>
+        <p class="empty-state" data-empty hidden>
+          Aucune création ne correspond à votre recherche.
+          Essayez un autre mot, ou réinitialisez le filtre Tous.
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="logo logo--footer">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path
+                  d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <p>
+            Une fleuristerie contemporaine, artisanale et profondément naturelle.
+            Nous sublimons les instants précieux depuis notre atelier d'Alger.
+          </p>
+        </div>
+        <div>
+          <h2>Navigation</h2>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Nos fleurs</a></li>
+            <li><a href="produits.html#bouquets">Bouquets</a></li>
+            <li><a href="produits.html#plantes">Plantes</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <address>
+            12, chemin des Jardins<br />
+            Hydra, Alger<br />
+            <a href="tel:+213555000000">+213 555 00 00 00</a><br />
+            <a href="mailto:contact@elegance-vegetal.dz">contact@elegance-vegetal.dz</a>
+          </address>
+        </div>
+        <div>
+          <h2>Suivez-nous</h2>
+          <ul class="socials">
+            <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            <li><a href="#" aria-label="Facebook">Facebook</a></li>
+            <li><a href="#" aria-label="Pinterest">Pinterest</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">© 2026 Elégance Végétal — Tous droits réservés.</p>
+    </footer>
+
+    <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+    <div id="panier" class="sr-only" aria-hidden="true"></div>
+
+    <script src="../js/product-data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/products.js"></script>
+  </body>
+</html>

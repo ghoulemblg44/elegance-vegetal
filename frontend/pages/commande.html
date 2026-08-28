@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Commande — Elégance Végétal, livraison à domicile en Algérie, paiement à la livraison." />
+    <title>Commande — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" id="haut">
+      <nav class="nav" aria-label="Navigation principale">
+        <button
+          class="icon-btn hamburger"
+          type="button"
+          data-open-menu
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="menu-mobile"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a class="logo" href="../index.html">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+              <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="logo__text">Elégance <em>Végétal</em></span>
+        </a>
+        <ul class="nav__links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="produits.html">Nos fleurs</a></li>
+          <li><a href="produits.html#bouquets">Bouquets</a></li>
+          <li><a href="produits.html#plantes">Plantes</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="icon-btn" type="button" data-open-search aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6" />
+              <path d="M16 16.5 20 20.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+          <a class="icon-btn cart-btn" href="panier.html" aria-label="Panier, 0 article">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 7h15l-1.5 9h-12L5 4H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="9.5" cy="20" r="1.2" fill="currentColor" />
+              <circle cx="17.5" cy="20" r="1.2" fill="currentColor" />
+            </svg>
+            <span class="cart-btn__count" data-cart-count>0</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="drawer-overlay" data-close-menu hidden></div>
+    <aside class="drawer" id="menu-mobile" aria-hidden="true">
+      <div class="drawer__top">
+        <p class="drawer__brand">Menu</p>
+        <button class="icon-btn" type="button" data-close-menu aria-label="Fermer le menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <nav aria-label="Navigation mobile">
+        <ul class="drawer__links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="produits.html">Nos fleurs</a></li>
+          <li><a href="produits.html#bouquets">Bouquets</a></li>
+          <li><a href="produits.html#plantes">Plantes</a></li>
+          <li><a href="panier.html">Panier</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="drawer__note">Livraison soignée à Alger et dans les wilayas voisines.</p>
+    </aside>
+
+    <div class="search-overlay" id="recherche" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="search-panel__top">
+          <h2 id="search-title">Rechercher</h2>
+          <button class="icon-btn" type="button" data-close-search aria-label="Fermer la recherche">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <form class="search-form" data-search-form data-catalog-url="produits.html">
+          <label class="sr-only" for="search-input">Rechercher un bouquet, une rose ou une plante</label>
+          <input id="search-input" type="search" name="q" placeholder="Roses, plantes, mariage…" autocomplete="off" />
+          <button class="btn btn--dark" type="submit">Chercher</button>
+        </form>
+        <p class="search-panel__hint">La recherche ouvre le catalogue.</p>
+      </div>
+    </div>
+
+    <main id="contenu">
+      <div class="product-page checkout-page" data-checkout-page>
+        <header class="catalog-header">
+          <p class="eyebrow">Commande</p>
+          <h1>Finaliser la commande</h1>
+          <p class="catalog-header__lead">
+            Livraison à domicile dans les 58 wilayas d'Algérie. Paiement à la
+            livraison, en dinars algériens (DA).
+          </p>
+        </header>
+
+        <a class="back-link" href="panier.html">Retour au panier</a>
+
+        <div class="cart-empty" data-checkout-empty hidden>
+          <p>Votre panier est vide. Ajoutez une création avant de commander.</p>
+          <a class="btn btn--dark" href="produits.html">Voir les fleurs</a>
+        </div>
+
+        <div class="checkout-layout" data-checkout-form-wrap hidden>
+          <form class="checkout-form" data-checkout-form novalidate>
+            <fieldset class="checkout-card checkout-card--info">
+              <legend>Vos informations</legend>
+              <p class="form-banner" data-form-banner hidden></p>
+
+              <div class="field">
+                <label for="fullName">Nom complet</label>
+                <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+                <span class="field-error" data-error="fullName" hidden></span>
+              </div>
+              <div class="field">
+                <label for="phone">Numéro de téléphone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  placeholder="05 XX XX XX XX"
+                  required
+                />
+                <span class="field-error" data-error="phone" hidden></span>
+              </div>
+              <div class="field wilaya-field">
+                <label for="wilaya-search">Wilaya</label>
+                <div class="wilaya-picker">
+                  <input
+                    id="wilaya-search"
+                    type="search"
+                    data-wilaya-search
+                    placeholder="Rechercher une wilaya…"
+                    autocomplete="off"
+                    aria-controls="wilaya-results"
+                    aria-autocomplete="list"
+                  />
+                  <ul class="wilaya-results" id="wilaya-results" data-wilaya-results role="listbox" hidden></ul>
+                  <label class="sr-only" for="wilaya">Sélectionnez votre wilaya</label>
+                  <select id="wilaya" name="wilaya" data-wilaya-select required>
+                    <option value="">Sélectionnez votre wilaya</option>
+                  </select>
+                </div>
+                <span class="field-error" data-error="wilaya" hidden></span>
+              </div>
+            </fieldset>
+
+            <fieldset class="checkout-card">
+              <legend>Livraison</legend>
+              <label class="choice-card is-selected">
+                <input type="radio" name="deliveryMethod" value="home" checked />
+                <span>
+                  <strong>Livraison à domicile</strong>
+                  <small>
+                    Votre commande est préparée à l'atelier et livrée à domicile
+                    dans la wilaya indiquée. Les frais éventuels seront confirmés
+                    par l'atelier.
+                  </small>
+                </span>
+              </label>
+            </fieldset>
+
+            <fieldset class="checkout-card">
+              <legend>Paiement</legend>
+              <label class="choice-card is-selected">
+                <input type="radio" name="paymentMethod" value="cash_on_delivery" checked />
+                <span>
+                  <strong>Paiement à la livraison</strong>
+                  <small>Vous réglez en dinars algériens (DA) à la réception de la commande.</small>
+                </span>
+              </label>
+            </fieldset>
+
+            <button class="btn btn--dark checkout-submit" type="submit" data-confirm-order>
+              Confirmer la commande
+            </button>
+          </form>
+
+          <aside class="checkout-summary" aria-label="Récapitulatif">
+            <h2>Votre commande</h2>
+            <ul class="checkout-items" data-checkout-items></ul>
+            <p class="checkout-row">
+              Sous-total <span data-checkout-subtotal></span>
+            </p>
+            <p class="checkout-row checkout-row--muted">
+              Livraison <span>À confirmer</span>
+            </p>
+            <p class="checkout-row checkout-row--total">
+              Total <span data-checkout-total></span>
+            </p>
+            <p class="checkout-note">Paiement à la livraison · DA</p>
+          </aside>
+        </div>
+
+        <section class="checkout-success" data-checkout-success hidden>
+          <p class="eyebrow">Commande enregistrée</p>
+          <h2>Merci pour votre confiance</h2>
+          <p class="checkout-success__ref">
+            Référence : <strong data-order-ref></strong>
+          </p>
+          <p data-order-thanks></p>
+          <ul class="checkout-items" data-success-items></ul>
+          <p class="checkout-row checkout-row--total">
+            Total <span data-success-total></span>
+          </p>
+          <p class="checkout-note" data-success-delivery></p>
+          <div class="checkout-success__actions">
+            <a class="btn btn--dark" href="../index.html">Retour à l'accueil</a>
+            <a class="btn btn--ghost" href="produits.html">Continuer mes achats</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="logo logo--footer">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <p>
+            Une fleuristerie contemporaine, artisanale et profondément naturelle.
+            Nous sublimons les instants précieux depuis notre atelier d'Alger.
+          </p>
+        </div>
+        <div>
+          <h2>Navigation</h2>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="produits.html">Nos fleurs</a></li>
+            <li><a href="produits.html#bouquets">Bouquets</a></li>
+            <li><a href="panier.html">Panier</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <address>
+            12, chemin des Jardins<br />
+            Hydra, Alger<br />
+            <a href="tel:+213555000000">+213 555 00 00 00</a><br />
+            <a href="mailto:contact@elegance-vegetal.dz">contact@elegance-vegetal.dz</a>
+          </address>
+        </div>
+        <div>
+          <h2>Suivez-nous</h2>
+          <ul class="socials">
+            <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            <li><a href="#" aria-label="Facebook">Facebook</a></li>
+            <li><a href="#" aria-label="Pinterest">Pinterest</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">© 2026 Elégance Végétal — Tous droits réservés.</p>
+    </footer>
+
+    <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/product-data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wilayas.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/checkout.js"></script>
+  </body>
+</html>
