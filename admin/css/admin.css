@@ -1,0 +1,270 @@
+:root {
+  --color-cream: #f6f1e8;
+  --color-cream-deep: #ebe3d4;
+  --color-white: #fffdf9;
+  --color-forest: #1c3b2a;
+  --color-forest-deep: #12261b;
+  --color-sage: #7d9b7a;
+  --color-sage-soft: #d5e0d1;
+  --color-gold: #c4a574;
+  --color-blush: #c97b7e;
+  --color-text: #243028;
+  --color-muted: #5e6861;
+  --color-border: rgba(28, 59, 42, 0.12);
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --shadow-soft: 0 18px 40px rgba(18, 38, 27, 0.1);
+  --ease: 0.25s ease;
+  --sidebar-width: 16.5rem;
+  --header-height: 4.25rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html[data-admin-locked] {
+  visibility: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-cream);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--color-forest);
+  color: var(--color-forest);
+}
+
+.btn--ghost:hover {
+  background: var(--color-forest);
+  color: var(--color-white);
+}
+
+.btn--danger {
+  background: var(--color-blush);
+}
+
+.btn--danger:hover {
+  background: #8a3d40;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.field label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-forest);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-cream);
+  color: var(--color-text);
+}
+
+.field textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 1px;
+  background: var(--color-white);
+}
+
+.field .is-invalid,
+.field input.is-invalid {
+  border-color: var(--color-blush);
+}
+
+.field-error {
+  color: var(--color-blush);
+  font-size: 0.82rem;
+}
+
+.form-banner {
+  background: rgba(201, 123, 126, 0.12);
+  color: #8a3d40;
+  border-radius: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.optional {
+  color: var(--color-sage);
+  font-weight: 400;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-forest);
+  color: var(--color-white);
+  padding: 0.6rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-forest-deep);
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-sage);
+  margin-bottom: 0.55rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.logo__mark {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex-shrink: 0;
+}
+
+.logo__mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo__text {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.logo__text em {
+  font-style: italic;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.8rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-forest);
+  color: var(--color-white);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--ease), transform var(--ease), opacity var(--ease);
+}
+
+.btn:hover {
+  background: var(--color-forest-deep);
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible,
+.icon-btn:focus-visible,
+.side-nav a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.icon-btn {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--color-forest);
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.icon-btn svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.icon-btn:hover {
+  color: var(--color-forest-deep);
+}

@@ -1082,7 +1082,7 @@ h3 {
   }
 }
 
-@media (max-width: 389px) {
+@media (max-width: 425px) {
   .nav {
     padding: 0 0.5rem;
     grid-template-columns: 2.25rem 1fr auto;

@@ -1,0 +1,62 @@
+const ADMIN_DEMO = {
+  stats: {
+    products: 16,
+    inStock: 13,
+    orders: 9,
+    revenue: 86400,
+  },
+  orders: [
+    {
+      reference: "EV-20260828-K4M2",
+      customer: "Amina B.",
+      wilaya: "Alger",
+      total: 17000,
+      status: "received",
+      statusLabel: "Reçue",
+      date: "28 août 2026",
+    },
+    {
+      reference: "EV-20260827-P9QX",
+      customer: "Yacine M.",
+      wilaya: "Oran",
+      total: 8500,
+      status: "preparing",
+      statusLabel: "En préparation",
+      date: "27 août 2026",
+    },
+    {
+      reference: "EV-20260827-H2LT",
+      customer: "Sara K.",
+      wilaya: "Constantine",
+      total: 12000,
+      status: "shipping",
+      statusLabel: "En livraison",
+      date: "27 août 2026",
+    },
+    {
+      reference: "EV-20260826-N7WR",
+      customer: "Nadir T.",
+      wilaya: "Blida",
+      total: 4200,
+      status: "delivered",
+      statusLabel: "Livrée",
+      date: "26 août 2026",
+    },
+    {
+      reference: "EV-20260825-C3VF",
+      customer: "Lina R.",
+      wilaya: "Tizi Ouzou",
+      total: 5800,
+      status: "cancelled",
+      statusLabel: "Annulée",
+      date: "25 août 2026",
+    },
+  ],
+  lowStock: [
+    { name: "Orchidée Phalaenopsis", category: "Plantes", stock: 2 },
+    { name: "Éclat Saint-Valentin", category: "Cadeaux", stock: 3 },
+    { name: "Jardin Secret", category: "Bouquets", stock: 3 },
+    { name: "Composition Hortensia", category: "Compositions", stock: 1 },
+  ],
+};
+

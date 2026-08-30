@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Tableau de bord — administration Elégance Végétal." />
+    <title>Tableau de bord — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <script src="js/admin-auth.js" data-protect="page"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="dash" data-admin-shell data-dashboard>
+      <div class="dash-overlay" data-sidebar-overlay data-close-sidebar hidden></div>
+
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar__top">
+          <p class="logo">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <button class="icon-btn sidebar__close" type="button" data-close-sidebar aria-label="Fermer le menu">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="sidebar__label">Atelier</p>
+        <nav class="side-nav" aria-label="Navigation administration">
+          <a class="is-active" href="dashboard.html" aria-current="page">Dashboard</a>
+          <a href="products.html">Produits</a>
+          <a href="orders.html">Commandes</a>
+          <a href="clients.html">Clients</a>
+          <a href="index.html" data-logout>Déconnexion</a>
+        </nav>
+      </aside>
+
+      <div class="dash-main">
+        <header class="dash-header">
+          <button
+            class="icon-btn hamburger"
+            type="button"
+            data-open-sidebar
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="dash-header__title">
+            <p class="eyebrow">Administration</p>
+            <h1>Tableau de bord</h1>
+          </div>
+          <div class="admin-user">
+            <span class="admin-user__avatar" aria-hidden="true">EV</span>
+            <span>
+              <strong data-admin-name>Atelier</strong>
+              <small>Administrateur · <button class="header-logout" type="button" data-logout>Déconnexion</button></small>
+            </span>
+          </div>
+        </header>
+
+        <main id="contenu" class="dash-content">
+          <section class="stat-grid" aria-label="Indicateurs">
+            <article class="stat-card">
+              <p class="eyebrow">Catalogue</p>
+              <p class="stat-card__value" data-stat-products>—</p>
+              <h2>Total produits</h2>
+            </article>
+            <article class="stat-card">
+              <p class="eyebrow">Disponibilité</p>
+              <p class="stat-card__value" data-stat-stock>—</p>
+              <h2>Produits en stock</h2>
+            </article>
+            <article class="stat-card">
+              <p class="eyebrow">Atelier</p>
+              <p class="stat-card__value" data-stat-orders>—</p>
+              <h2>Total commandes</h2>
+            </article>
+            <article class="stat-card">
+              <p class="eyebrow">Livraison</p>
+              <p class="stat-card__value" data-stat-delivered>—</p>
+              <h2>Commandes livrées</h2>
+            </article>
+            <article class="stat-card">
+              <p class="eyebrow">En cours</p>
+              <p class="stat-card__value" data-stat-pending>—</p>
+              <h2>Commandes en attente</h2>
+            </article>
+            <article class="stat-card">
+              <p class="eyebrow">Période</p>
+              <p class="stat-card__value stat-card__value--price" data-stat-revenue>—</p>
+              <h2>Chiffre d'affaires</h2>
+            </article>
+          </section>
+
+          <div class="dash-grid">
+            <section class="panel" id="commandes" aria-labelledby="orders-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Suivi</p>
+                  <h2 id="orders-title">Commandes récentes</h2>
+                </div>
+              </header>
+              <div class="table-wrap" data-recent-wrap>
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Référence</th>
+                      <th>Téléphone</th>
+                      <th>Wilaya</th>
+                      <th>Total</th>
+                      <th>Statut</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody data-orders-body></tbody>
+                </table>
+              </div>
+              <p class="empty-state" data-orders-empty hidden>Aucune commande pour le moment.</p>
+            </section>
+
+            <section class="panel" id="produits" aria-labelledby="stock-title">
+              <header class="panel__head">
+                <div>
+                  <p class="eyebrow">Alerte</p>
+                  <h2 id="stock-title">Stock bas</h2>
+                </div>
+              </header>
+              <ul class="stock-list" data-low-stock></ul>
+              <p class="empty-state" data-low-stock-empty hidden>Aucun produit en stock bas.</p>
+            </section>
+          </div>
+
+          <section class="panel" aria-labelledby="activity-title">
+            <header class="panel__head">
+              <div>
+                <p class="eyebrow">Suivi</p>
+                <h2 id="activity-title">Activité récente</h2>
+              </div>
+            </header>
+            <ul class="activity-list" data-activity></ul>
+            <p class="empty-state" data-activity-empty hidden>Aucune activité récente.</p>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/admin-shell.js"></script>
+    <script src="js/product-store.js"></script>
+    <script src="js/order-store.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

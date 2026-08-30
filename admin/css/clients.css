@@ -1,0 +1,48 @@
+.order-item__aside {
+  display: grid;
+  justify-items: end;
+  gap: 0.35rem;
+}
+
+.data-table tr[data-open-customer] {
+  cursor: pointer;
+}
+
+.data-table tr[data-open-customer]:hover {
+  background: rgba(213, 224, 209, 0.45);
+}
+
+@media (max-width: 1023px) {
+  [data-clients-page] .table-wrap {
+    overflow: visible;
+  }
+
+  [data-clients-page] .data-table td {
+    grid-template-columns: minmax(7.5rem, 38%) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  [data-clients-page] .data-table td::before {
+    white-space: normal;
+  }
+
+  .data-table tr[data-open-customer]:hover {
+    background: var(--color-cream);
+  }
+
+  .data-table tr[data-open-customer]::after {
+    content: "Voir le détail";
+    display: block;
+    margin-top: 0.55rem;
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.82rem;
+    color: var(--color-forest);
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-clients-page] .data-table {
+    min-width: 52rem;
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Connexion à l'espace d'administration Elégance Végétal." />
+    <title>Connexion admin — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#login">Aller au formulaire</a>
+
+    <div class="login-shell">
+      <aside class="login-brand" aria-hidden="false">
+        <p class="logo">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+              <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span class="logo__text">Elégance <em>Végétal</em></span>
+        </p>
+        <p class="login-brand__eyebrow">Administration</p>
+        <h1>Espace atelier</h1>
+        <p class="login-brand__lead">
+          Accès réservé à l'équipe. Gérez le catalogue, les commandes et les
+          livraisons depuis un espace dédié.
+        </p>
+      </aside>
+
+      <main class="login-panel" id="login">
+        <div class="login-card" data-login-card>
+          <p class="eyebrow">Connexion</p>
+          <h2>Accéder à l'administration</h2>
+          <p class="login-card__intro">Saisissez vos identifiants d'atelier.</p>
+
+          <p class="form-banner" data-form-banner hidden role="alert"></p>
+
+          <form class="login-form" data-login-form novalidate>
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="username"
+                inputmode="email"
+                required
+              />
+              <span class="field-error" data-error="email" hidden></span>
+            </div>
+
+            <div class="field">
+              <label for="password">Mot de passe</label>
+              <div class="password-wrap">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  class="password-toggle"
+                  type="button"
+                  data-toggle-password
+                  aria-label="Afficher le mot de passe"
+                  aria-pressed="false"
+                >
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M2.5 12S6.5 6 12 6s9.5 6 9.5 6-4 6-9.5 6S2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" aria-hidden="true" hidden>
+                    <path d="M4 5.5 19.5 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M10.2 10.4A2.6 2.6 0 0 0 12 14.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M6.2 8.2C4.2 9.6 2.5 12 2.5 12S6.5 18 12 18c1.5 0 2.9-.4 4.1-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M14.8 8.4C13.9 8.1 13 8 12 8 6.5 8 2.5 12 2.5 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M12 8c5.5 0 9.5 6 9.5 6a16 16 0 0 1-2.4 2.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+              <span class="field-error" data-error="password" hidden></span>
+            </div>
+
+            <button class="btn" type="submit" data-login-submit>Se connecter</button>
+          </form>
+        </div>
+
+        <section class="login-success" data-login-success hidden>
+          <p class="eyebrow">Connexion réussie</p>
+          <h2>Bienvenue</h2>
+          <p data-login-welcome></p>
+          <p class="login-success__note">L'espace d'administration sera ouvert à l'étape suivante.</p>
+        </section>
+
+        <p class="login-foot">© 2026 Elégance Végétal — Accès atelier</p>
+      </main>
+    </div>
+
+    <script src="js/admin-auth.js" data-protect="guest"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
