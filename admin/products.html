@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Gestion des produits — administration Elégance Végétal." />
+    <title>Gestion des produits — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/products.css" />
+    <script src="js/admin-auth.js" data-protect="page"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="dash" data-admin-shell data-products-page>
+      <div class="dash-overlay" data-sidebar-overlay data-close-sidebar hidden></div>
+
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar__top">
+          <p class="logo">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <button class="icon-btn sidebar__close" type="button" data-close-sidebar aria-label="Fermer le menu">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="sidebar__label">Atelier</p>
+        <nav class="side-nav" aria-label="Navigation administration">
+          <a href="dashboard.html">Dashboard</a>
+          <a class="is-active" href="products.html" aria-current="page">Produits</a>
+          <a href="orders.html">Commandes</a>
+          <a href="clients.html">Clients</a>
+          <a href="livraison.html">Livraison</a>
+          <a href="index.html" data-logout>Déconnexion</a>
+        </nav>
+      </aside>
+
+      <div class="dash-main">
+        <header class="dash-header">
+          <button
+            class="icon-btn hamburger"
+            type="button"
+            data-open-sidebar
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="dash-header__title">
+            <p class="eyebrow">Catalogue</p>
+            <h1>Gestion des produits</h1>
+          </div>
+          <div class="admin-user">
+            <span class="admin-user__avatar" aria-hidden="true">EV</span>
+            <span>
+              <strong data-admin-name>Atelier</strong>
+              <small>Administrateur · <button class="header-logout" type="button" data-logout>Déconnexion</button></small>
+            </span>
+          </div>
+        </header>
+
+        <main id="contenu" class="dash-content">
+          <section class="panel">
+            <div class="product-toolbar">
+              <label class="field toolbar-search">
+                <span class="sr-only">Rechercher un produit</span>
+                <input type="search" data-product-search placeholder="Rechercher un produit…" />
+              </label>
+              <label class="field">
+                <span class="sr-only">Filtrer par catégorie</span>
+                <select data-filter-category>
+                  <option value="all">Toutes les catégories</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="sr-only">Filtrer par stock</span>
+                <select data-filter-stock>
+                  <option value="all">Tous les stocks</option>
+                  <option value="in-stock">En stock</option>
+                  <option value="low">Stock bas</option>
+                  <option value="out">Rupture</option>
+                </select>
+              </label>
+              <button class="btn" type="button" data-open-create>Ajouter un produit</button>
+            </div>
+            <p class="form-banner" data-page-banner hidden role="alert"></p>
+            <p class="catalog-count" data-page-success hidden></p>
+            <p class="catalog-count" data-product-loading hidden>Chargement des produits…</p>
+            <p class="catalog-count" data-product-count></p>
+            <p class="empty-state" data-product-empty hidden>Aucun produit ne correspond à votre recherche.</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-product-list></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="dialog-overlay" data-product-dialog hidden>
+        <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="product-form-title">
+          <header class="dialog__head">
+            <h2 id="product-form-title" data-form-title>Ajouter un produit</h2>
+            <button class="icon-btn" type="button" data-close-form aria-label="Fermer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </button>
+          </header>
+          <p class="form-banner" data-form-banner hidden></p>
+          <form class="product-form" data-product-form novalidate>
+            <div class="field">
+              <label for="product-name">Nom du produit</label>
+              <input id="product-name" name="name" type="text" required />
+              <span class="field-error" data-error="name" hidden></span>
+            </div>
+            <div class="field">
+              <label for="product-description">Description</label>
+              <textarea id="product-description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="product-category">Catégorie</label>
+                <select id="product-category" name="category" required>
+                  <option value="">Choisir…</option>
+                </select>
+                <span class="field-error" data-error="category" hidden></span>
+              </div>
+              <div class="field">
+                <label for="product-price">Prix (DA)</label>
+                <input id="product-price" name="price" type="number" min="1" step="1" required />
+                <span class="field-error" data-error="price" hidden></span>
+              </div>
+              <div class="field">
+                <label for="product-old-price">Ancien prix <span class="optional">(facultatif)</span></label>
+                <input id="product-old-price" name="previousPrice" type="number" min="1" step="1" />
+                <span class="field-error" data-error="previousPrice" hidden></span>
+              </div>
+              <div class="field">
+                <label for="product-weight">Poids unitaire (kg) <span class="optional">(facultatif)</span></label>
+                <input id="product-weight" name="weightKg" type="number" min="0.001" step="0.001" inputmode="decimal" />
+                <span class="field-error" data-error="weightKg" hidden></span>
+              </div>
+              <div class="field">
+                <label for="product-stock">Stock</label>
+                <input id="product-stock" name="stock" type="number" min="0" step="1" required />
+                <span class="field-error" data-error="stock" hidden></span>
+              </div>
+            </div>
+            <fieldset class="field status-field">
+              <legend>Statut</legend>
+              <label class="choice"><input type="radio" name="status" value="active" checked /> Actif</label>
+              <label class="choice"><input type="radio" name="status" value="inactive" /> Inactif</label>
+            </fieldset>
+            <div class="field">
+              <label for="product-image">Image</label>
+              <input id="product-image" name="image" type="file" accept="image/*" data-image-input />
+              <div class="image-preview" data-image-preview hidden></div>
+              <span class="field-error" data-error="image" hidden></span>
+            </div>
+            <div class="dialog__actions">
+              <button class="btn btn--ghost" type="button" data-close-form>Annuler</button>
+              <button class="btn" type="submit">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="dialog-overlay" data-delete-dialog hidden>
+        <div class="dialog dialog--small" role="alertdialog" aria-modal="true" aria-labelledby="delete-title">
+          <h2 id="delete-title">Supprimer le produit</h2>
+          <p>Cette action est définitive. Confirmez la suppression de <strong data-delete-name>ce produit</strong>.</p>
+          <div class="dialog__actions">
+            <button class="btn btn--ghost" type="button" data-close-delete>Annuler</button>
+            <button class="btn btn--danger" type="button" data-confirm-delete>Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/admin-shell.js"></script>
+    <script src="js/cloudinary-config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/product-store.js"></script>
+    <script src="js/products.js"></script>
+  </body>
+</html>

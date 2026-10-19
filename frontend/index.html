@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Elégance Végétal — fleuriste d'exception à Alger. Bouquets, roses, plantes et compositions florales livrés avec soin."
+    />
+    <title>Elégance Végétal — Fleuriste d'exception</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header" id="haut">
+      <nav class="nav" aria-label="Navigation principale">
+        <button
+          class="icon-btn hamburger"
+          type="button"
+          data-open-menu
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="menu-mobile"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a class="logo" href="#accueil">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path
+                d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M16 28V12"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="logo__text">Elégance <em>Végétal</em></span>
+        </a>
+
+        <ul class="nav__links">
+          <li><a class="is-active" href="#accueil">Accueil</a></li>
+          <li><a href="pages/produits.html">Nos fleurs</a></li>
+          <li><a href="pages/produits.html#bouquets">Bouquets</a></li>
+          <li><a href="pages/produits.html#plantes">Plantes</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <button class="icon-btn" type="button" data-open-search aria-label="Rechercher">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6" />
+              <path d="M16 16.5 20 20.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+          <a class="icon-btn cart-btn" href="pages/panier.html" aria-label="Panier, 0 article">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6 7h15l-1.5 9h-12L5 4H2"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="9.5" cy="20" r="1.2" fill="currentColor" />
+              <circle cx="17.5" cy="20" r="1.2" fill="currentColor" />
+            </svg>
+            <span class="cart-btn__count" data-cart-count>0</span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="drawer-overlay" data-close-menu hidden></div>
+    <aside class="drawer" id="menu-mobile" aria-hidden="true">
+      <div class="drawer__top">
+        <p class="drawer__brand">Menu</p>
+        <button class="icon-btn" type="button" data-close-menu aria-label="Fermer le menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <nav aria-label="Navigation mobile">
+        <ul class="drawer__links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="pages/produits.html">Nos fleurs</a></li>
+          <li><a href="pages/produits.html#bouquets">Bouquets</a></li>
+          <li><a href="pages/produits.html#plantes">Plantes</a></li>
+          <li><a href="#occasions">Occasions</a></li>
+          <li><a href="pages/panier.html">Panier</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="drawer__note">Livraison soignée à Alger et dans les wilayas voisines.</p>
+    </aside>
+
+    <div class="search-overlay" id="recherche" hidden>
+      <div class="search-panel" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="search-panel__top">
+          <h2 id="search-title">Rechercher</h2>
+          <button class="icon-btn" type="button" data-close-search aria-label="Fermer la recherche">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <form class="search-form" data-search-form>
+          <label class="sr-only" for="search-input">Rechercher un bouquet, une rose ou une plante</label>
+          <input
+            id="search-input"
+            type="search"
+            name="q"
+            placeholder="Roses, plantes, mariage…"
+            autocomplete="off"
+          />
+          <button class="btn btn--dark" type="submit">Chercher</button>
+        </form>
+        <p class="search-panel__hint">Parcourez bouquets, plantes et compositions.</p>
+      </div>
+    </div>
+
+    <main id="contenu">
+      <section class="hero" id="accueil">
+        <div class="hero__content">
+          <p class="eyebrow">Fleuriste d'exception — Alger</p>
+          <h1>L'élégance à l'état naturel</h1>
+          <p class="hero__lead">
+            Bouquets d'artiste, plantes rares et compositions florales,
+            préparés le jour même et livrés avec le soin d'un atelier artisanal.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="pages/produits.html">Découvrir nos fleurs</a>
+            <a class="btn btn--ghost" href="pages/produits.html#bouquets">Voir nos bouquets</a>
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <img
+            src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1800&q=80"
+            alt="Bouquet de pivoines et roses pâles dans un atelier fleuri"
+            fetchpriority="high"
+          />
+          <figcaption class="hero__badge">Créations du jour</figcaption>
+        </figure>
+      </section>
+
+      <section class="section categories" id="categories" aria-labelledby="categories-title">
+        <div class="section__head">
+          <p class="eyebrow">Univers floral</p>
+          <h2 id="categories-title">Nos collections</h2>
+          <p class="section__intro">
+            Chaque catégorie est pensée pour un geste, un lieu, un moment.
+          </p>
+        </div>
+        <div class="category-track">
+          <a class="category-card" href="pages/produits.html#bouquets">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80" alt="Bouquets de saison" loading="lazy" />
+            <span>Bouquets</span>
+          </a>
+          <a class="category-card" href="pages/produits.html#roses">
+            <img src="https://images.unsplash.com/photo-1518621736915-f3b1c707cce5?auto=format&fit=crop&w=900&q=80" alt="Roses d'atelier" loading="lazy" />
+            <span>Roses</span>
+          </a>
+          <a class="category-card" href="pages/produits.html#plantes">
+            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=80" alt="Plantes d'intérieur" loading="lazy" />
+            <span>Plantes</span>
+          </a>
+          <a class="category-card" href="pages/produits.html#fleurs-sechees">
+            <img src="https://images.unsplash.com/photo-1523694576729-ed1669c1cdc5?auto=format&fit=crop&w=900&q=80" alt="Fleurs séchées" loading="lazy" />
+            <span>Fleurs séchées</span>
+          </a>
+          <a class="category-card" href="pages/produits.html#compositions">
+            <img src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?auto=format&fit=crop&w=900&q=80" alt="Compositions florales" loading="lazy" />
+            <span>Compositions</span>
+          </a>
+          <a class="category-card" href="pages/produits.html#cadeaux">
+            <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&q=80" alt="Cadeaux floraux" loading="lazy" />
+            <span>Cadeaux</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section products" id="produits" aria-labelledby="products-title">
+        <div class="section__head">
+          <p class="eyebrow">Sélection de l'atelier</p>
+          <h2 id="products-title">Créations en lumière</h2>
+          <p class="section__intro">
+            Huit créations de l'atelier, à offrir ou à garder.
+            Chaque pièce est préparée le jour même, à Alger.
+          </p>
+        </div>
+        <div class="product-grid" data-featured-grid></div>
+        <p class="section__cta">
+          <a class="btn btn--ghost" href="pages/produits.html">Voir toutes nos fleurs</a>
+        </p>
+      </section>
+
+      <section class="section values" id="engagements" aria-labelledby="values-title">
+        <div class="section__head">
+          <p class="eyebrow">Notre promesse</p>
+          <h2 id="values-title">Pourquoi Elégance Végétal</h2>
+          <p class="section__intro">
+            Quatre engagements simples, pour des fleurs qui arrivent belles et à l'heure.
+          </p>
+        </div>
+        <div class="values-grid">
+          <article class="value-card">
+            <span class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 5c6 4 9 8 9 13a9 9 0 1 1-18 0c0-5 3-9 9-13Z" stroke="currentColor" stroke-width="1.6" />
+              </svg>
+            </span>
+            <h3>Qualité</h3>
+            <p>Fleurs sélectionnées auprès de producteurs exigeants, jamais de compromis sur la tige ni la couleur.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect x="5" y="11" width="22" height="13" rx="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="M5 16h22M11 11V8h10v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <h3>Livraison</h3>
+            <p>Créneaux choisis avec vous : essentiel pour des fleurs fraîches, livrées à l'heure à Alger.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M8 18c2-6 8-11 8-11s6 5 8 11a8 8 0 1 1-16 0Z" stroke="currentColor" stroke-width="1.6" />
+              </svg>
+            </span>
+            <h3>Fraîcheur</h3>
+            <p>Chaque composition est préparée le matin même, jamais la veille, pour une tenue exceptionnelle.</p>
+          </article>
+          <article class="value-card">
+            <span class="value-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+                <path d="M7 26c1.5-5 4.5-7 9-7s7.5 2 9 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <h3>Service client</h3>
+            <p>Conseil personnalisé, carte message, et suivi de chaque commande jusqu'à la porte du destinataire.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="promo" id="occasions" aria-labelledby="promo-title">
+        <img class="promo__bg" src="https://images.unsplash.com/photo-1468327768560-75b60c6f2f44?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" />
+        <div class="promo__content">
+          <p class="eyebrow eyebrow--light">Occasions du moment</p>
+          <h2 id="promo-title">Mariages, hommages et célébrations</h2>
+          <p>
+            Un instant unique mérite un geste floral d'exception. Nos ateliers
+            composent des pièces sur mesure pour les cérémonies, les naissances
+            et les moments qui ne se répètent pas.
+          </p>
+          <a class="btn btn--light" href="#contact">Parler à l'atelier</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="logo logo--footer">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path
+                  d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <p>
+            Une fleuristerie contemporaine, artisanale et profondément naturelle.
+            Nous sublimons les instants précieux depuis notre atelier d'Alger.
+          </p>
+        </div>
+        <div>
+          <h2>Navigation</h2>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="pages/produits.html">Nos fleurs</a></li>
+            <li><a href="pages/produits.html#bouquets">Bouquets</a></li>
+            <li><a href="pages/produits.html#plantes">Plantes</a></li>
+            <li><a href="#occasions">Occasions</a></li>
+            <li><a href="pages/panier.html">Panier</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <address>
+            12, chemin des Jardins<br />
+            Hydra, Alger<br />
+            <a href="tel:+213+213 552433901">+213 552433901</a><br />
+            <a href="mailto:contact@elegance-vegetal.dz">contact@elegance-vegetal.dz</a>
+          </address>
+        </div>
+        <div>
+          <h2>Suivez-nous</h2>
+          <ul class="socials">
+            <li><a href="#" aria-label="Instagram">Instagram</a></li>
+            <li><a href="#" aria-label="Facebook">Facebook</a></li>
+            <li><a href="#" aria-label="Pinterest">Pinterest</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">© 2026 Elégance Végétal — Tous droits réservés.</p>
+    </footer>
+
+    <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+
+    <script src="js/product-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

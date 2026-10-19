@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Gestion des clients — administration Elégance Végétal." />
+    <title>Gestion des clients — Elégance Végétal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/products.css" />
+    <link rel="stylesheet" href="css/orders.css" />
+    <link rel="stylesheet" href="css/clients.css" />
+    <script src="js/admin-auth.js" data-protect="page"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <div class="dash" data-admin-shell data-clients-page>
+      <div class="dash-overlay" data-sidebar-overlay data-close-sidebar hidden></div>
+
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar__top">
+          <p class="logo">
+            <span class="logo__mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 28c0-8 8-10 8-18a8 8 0 1 0-16 0c0 8 8 10 8 18Z" stroke="currentColor" stroke-width="1.6" />
+                <path d="M16 28V12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="logo__text">Elégance <em>Végétal</em></span>
+          </p>
+          <button class="icon-btn sidebar__close" type="button" data-close-sidebar aria-label="Fermer le menu">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="sidebar__label">Atelier</p>
+        <nav class="side-nav" aria-label="Navigation administration">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="products.html">Produits</a>
+          <a href="orders.html">Commandes</a>
+          <a class="is-active" href="clients.html" aria-current="page">Clients</a>
+          <a href="livraison.html">Livraison</a>
+          <a href="index.html" data-logout>Déconnexion</a>
+        </nav>
+      </aside>
+
+      <div class="dash-main">
+        <header class="dash-header">
+          <button
+            class="icon-btn hamburger"
+            type="button"
+            data-open-sidebar
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="dash-header__title">
+            <p class="eyebrow">Atelier</p>
+            <h1>Gestion des clients</h1>
+          </div>
+          <div class="admin-user">
+            <span class="admin-user__avatar" aria-hidden="true">EV</span>
+            <span>
+              <strong data-admin-name>Atelier</strong>
+              <small>Administrateur · <button class="header-logout" type="button" data-logout>Déconnexion</button></small>
+            </span>
+          </div>
+        </header>
+
+        <main id="contenu" class="dash-content">
+          <section class="panel">
+            <div class="product-toolbar order-toolbar">
+              <label class="field toolbar-search">
+                <span class="sr-only">Rechercher par numéro de téléphone</span>
+                <input type="search" data-client-search placeholder="Numéro de téléphone…" />
+              </label>
+              <label class="field">
+                <span class="sr-only">Filtrer par wilaya</span>
+                <select data-filter-wilaya>
+                  <option value="all">Toutes les wilayas</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="sr-only">Filtrer par nombre de commandes</span>
+                <select data-filter-orders>
+                  <option value="all">Toutes les commandes</option>
+                  <option value="1">1 commande</option>
+                  <option value="2plus">2 commandes et plus</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="sr-only">Filtrer par statut</span>
+                <select data-filter-status>
+                  <option value="all">Tous les statuts</option>
+                </select>
+              </label>
+            </div>
+            <p class="catalog-count" data-client-count></p>
+            <p class="empty-state" data-client-empty hidden>Aucun client ne correspond à votre recherche.</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Numéro de téléphone</th>
+                    <th>Wilaya</th>
+                    <th>Nombre de commandes</th>
+                    <th>Total dépensé</th>
+                    <th>Dernière commande</th>
+                    <th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody data-client-list></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <div class="dialog-overlay" data-client-dialog hidden>
+        <div class="dialog dialog--order" role="dialog" aria-modal="true" aria-labelledby="client-detail-title">
+          <header class="dialog__head">
+            <span class="sr-only">Détail du client</span>
+            <button class="icon-btn" type="button" data-close-client aria-label="Fermer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </button>
+          </header>
+          <div data-client-details></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/admin-shell.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/order-store.js"></script>
+    <script src="js/customer-store.js"></script>
+    <script src="js/clients.js"></script>
+  </body>
+</html>
