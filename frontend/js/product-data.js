@@ -24,6 +24,16 @@ const formatPrice = (price) => {
   return `${safe.toLocaleString("fr-FR").replace(/\s/g, "\u00a0")}\u00a0DA`;
 };
 
+/** Current price, plus strikethrough old price when a promo is set. */
+const formatProductPriceHtml = (product) => {
+  const current = formatPrice(product.price);
+  const old = Number(product.oldPrice);
+  if (Number.isFinite(old) && old > Number(product.price)) {
+    return `<del class="price-old">${formatPrice(old)}</del> <ins class="price-now">${current}</ins>`;
+  }
+  return `<span class="price-now">${current}</span>`;
+};
+
 const escapeHtml = (value) =>
   String(value)
     .replaceAll("&", "&amp;")
@@ -50,6 +60,7 @@ const fromApiProduct = (product) => {
     name: product.name,
     category: product.category,
     price: Number(product.price),
+    oldPrice: product.oldPrice == null ? null : Number(product.oldPrice),
     description: product.description || "",
     story: product.story || product.description || "",
     availability: product.availability || fallback.availability,

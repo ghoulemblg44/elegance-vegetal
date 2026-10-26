@@ -42,7 +42,11 @@ const productRowTemplate = (product) => {
       </td>
       <td data-label="Nom"><strong>${escapeAdminHtml(product.name)}</strong></td>
       <td data-label="Catégorie">${escapeAdminHtml(product.category)}</td>
-      <td data-label="Prix">${formatAdminPrice(product.price)}</td>
+      <td data-label="Prix">${
+        product.previousPrice != null && product.previousPrice > product.price
+          ? `<del class="price-old">${formatAdminPrice(product.previousPrice)}</del> <strong>${formatAdminPrice(product.price)}</strong>`
+          : formatAdminPrice(product.price)
+      }</td>
       <td data-label="Stock"><span class="status ${stockTone(product.stock)}">${product.stock}</span></td>
       <td data-label="Statut">
         <span class="status ${active ? "status--received" : "status--delivered"}">${active ? "Actif" : "Inactif"}</span>
@@ -264,6 +268,9 @@ const initProductsPage = () => {
     }
     if (payload.previousPrice != null && (!Number.isFinite(payload.previousPrice) || payload.previousPrice <= 0)) {
       setError("previousPrice", "L'ancien prix doit être positif, ou laissé vide.");
+      valid = false;
+    } else if (payload.previousPrice != null && payload.previousPrice <= payload.price) {
+      setError("previousPrice", "L'ancien prix doit être plus élevé que le prix actuel.");
       valid = false;
     }
     if (

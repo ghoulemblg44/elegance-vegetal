@@ -70,7 +70,7 @@ const initCartPage = () => {
         byCode.set(row.code, row);
       });
       tariffs = {
-        extraItemFee: Number(payload.data.extraItemFee) || 50,
+        extraItemFee: Number(payload.data.extraItemFee) || 250,
         byCode,
       };
     } catch {

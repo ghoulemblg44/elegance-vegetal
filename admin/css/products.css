@@ -12,6 +12,12 @@
   min-height: 3rem;
 }
 
+.price-old {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  margin-right: 0.4rem;
+}
+
 .catalog-count {
   color: var(--color-muted);
   font-size: 0.88rem;

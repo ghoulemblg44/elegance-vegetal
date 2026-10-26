@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <div class="product-card__body">
                 <h3>${escapeHtml(product.name)}</h3>
-                <p class="product-card__price">${formatPrice(product.price)}</p>
+                <p class="product-card__price">${formatProductPriceHtml(product)}</p>
                 <p class="product-card__text">${escapeHtml(product.description)}</p>
               </div>
             </a>

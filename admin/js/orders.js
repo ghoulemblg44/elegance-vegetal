@@ -53,7 +53,18 @@ const displayOrderValue = (value) => {
   return text || "Non renseigné";
 };
 
-const productSummary = (order) => (order.items || []).map((item) => item.name).join(", ");
+const itemImageSrc = (item) => String(item && item.image ? item.image : "").trim();
+
+const productSummary = (order) =>
+  (order.items || [])
+    .map((item) => {
+      const src = itemImageSrc(item);
+      const photo = src
+        ? `<img class="order-thumb" src="${escapeOrderHtml(src)}" alt="${escapeOrderHtml(item.name || "")}" />`
+        : `<span class="order-thumb order-thumb--empty" aria-hidden="true"></span>`;
+      return `<span class="order-product">${photo}<span>${escapeOrderHtml(item.name || "Produit")}</span></span>`;
+    })
+    .join("");
 
 const statusBadge = (statusId) => {
   const meta = OrderStore.getStatusMeta(statusId);
@@ -68,7 +79,7 @@ const orderRowTemplate = (order) => {
     <td data-label="Nom complet">${escapeOrderHtml(customer.fullName)}</td>
     <td data-label="Numéro de téléphone">${escapeOrderHtml(customer.phone)}</td>
     <td data-label="Wilaya">${escapeOrderHtml(customer.wilaya)}</td>
-    <td data-label="Produits commandés">${escapeOrderHtml(productSummary(order))}</td>
+    <td data-label="Produits commandés"><div class="order-products">${productSummary(order)}</div></td>
     <td data-label="Quantité">${totalQuantity(order)}</td>
     <td data-label="Total (DA)">${formatAdminPrice(order.total)}</td>
     <td data-label="Méthode de paiement">${escapeOrderHtml(order.paymentLabel)}</td>
@@ -78,8 +89,14 @@ const orderRowTemplate = (order) => {
 `;
 };
 
-const itemRowTemplate = (item) => `
+const itemRowTemplate = (item) => {
+  const src = itemImageSrc(item);
+  const photo = src
+    ? `<img class="order-item__photo" src="${escapeOrderHtml(src)}" alt="${escapeOrderHtml(item.name || "")}" />`
+    : `<span class="order-item__photo order-item__photo--empty" aria-hidden="true"></span>`;
+  return `
   <li class="order-item">
+    ${photo}
     <div>
       <p class="order-item__name">${escapeOrderHtml(item.name)}</p>
       <p class="order-item__meta">Qté ${item.quantity} · ${formatAdminPrice(item.unitPrice)}</p>
@@ -87,6 +104,7 @@ const itemRowTemplate = (item) => `
     <p class="order-item__sub">${formatAdminPrice(item.subtotal)}</p>
   </li>
 `;
+};
 
 const initOrdersPage = async () => {
   const page = document.querySelector("[data-orders-page]");

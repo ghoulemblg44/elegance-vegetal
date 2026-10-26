@@ -146,7 +146,7 @@ const initLivraisonPage = () => {
       const payload = await AdminApi.request("/api/delivery/tariffs");
       const data = payload.data || {};
       wilayas = (data.wilayas || []).map((wilaya) => ({ ...wilaya }));
-      feeInput.value = data.extraItemFee != null ? data.extraItemFee : 50;
+      feeInput.value = data.extraItemFee != null ? data.extraItemFee : 250;
       render();
     } catch (error) {
       showBanner(error.message || "Impossible de charger les tarifs.", true);

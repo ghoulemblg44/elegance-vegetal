@@ -159,22 +159,22 @@ test('weight: exactly 5 kg has no surcharge; the next band adds 50 DA', async ()
 
   const five = await call('POST', '/api/orders', orderBody({ items: [{ productId: 'pot', quantity: 2 }] })); // 5 kg
   assert.equal(five.body.data.weightSurcharge, 0);
-  assert.equal(five.body.data.itemSurcharge, 50); // +1 extra item
-  assert.equal(five.body.data.total, 2000 + 500 + 50);
+  assert.equal(five.body.data.itemSurcharge, 250); // +1 extra item
+  assert.equal(five.body.data.total, 2000 + 500 + 250);
   assert.equal(five.body.data.delivery.weightKg, 5);
 
   const seven = await call('POST', '/api/orders', orderBody({ items: [{ productId: 'pot', quantity: 3 }] })); // 7.5 kg
   assert.equal(seven.body.data.weightSurcharge, 50);
-  assert.equal(seven.body.data.itemSurcharge, 100); // +2 extra items
-  assert.equal(seven.body.data.total, 3000 + 500 + 100 + 50);
+  assert.equal(seven.body.data.itemSurcharge, 500); // +2 extra items
+  assert.equal(seven.body.data.total, 3000 + 500 + 500 + 50);
   assert.equal(seven.body.data.delivery.weightBands, 1);
 
   const eleven = await call('POST', '/api/orders', orderBody({ items: [{ productId: 'pot', quantity: 5 }] })); // 12.5 kg
   assert.equal(eleven.body.data.weightSurcharge, 100);
-  assert.equal(eleven.body.data.itemSurcharge, 200);
+  assert.equal(eleven.body.data.itemSurcharge, 1000);
 });
 
-test('extra item: +50 DA delivery per unit beyond the first', async () => {
+test('extra item: +250 DA delivery per unit beyond the first', async () => {
   makeProduct({ name: 'Rose', slug: 'rose', price: 1000, weightKg: 0.5 });
 
   const one = await call('POST', '/api/orders', orderBody({ items: [{ productId: 'rose', quantity: 1 }] }));
@@ -182,10 +182,10 @@ test('extra item: +50 DA delivery per unit beyond the first', async () => {
   assert.equal(one.body.data.total, 1000 + 500);
 
   const three = await call('POST', '/api/orders', orderBody({ items: [{ productId: 'rose', quantity: 3 }] }));
-  assert.equal(three.body.data.itemSurcharge, 100);
-  assert.equal(three.body.data.total, 3000 + 500 + 100);
+  assert.equal(three.body.data.itemSurcharge, 500);
+  assert.equal(three.body.data.total, 3000 + 500 + 500);
   assert.equal(three.body.data.delivery.itemCount, 3);
-  assert.equal(three.body.data.delivery.feePerExtraItem, 50);
+  assert.equal(three.body.data.delivery.feePerExtraItem, 250);
 });
 
 test('the browser cannot set prices: fake unitPrice / subtotal / deliveryFee are ignored', async () => {
@@ -207,8 +207,8 @@ test('the browser cannot set prices: fake unitPrice / subtotal / deliveryFee are
   assert.equal(body.data.items[0].weightKg, 1);
   assert.equal(body.data.subtotal, 17000);
   assert.equal(body.data.deliveryFee, 500);
-  assert.equal(body.data.itemSurcharge, 50); // quantity 2
-  assert.equal(body.data.total, 17550);
+  assert.equal(body.data.itemSurcharge, 250); // quantity 2
+  assert.equal(body.data.total, 17750);
 });
 
 test('a total that differs from the server total is refused (409) and nothing is stored', async () => {
@@ -253,7 +253,7 @@ test('the displayed quote and the stored order always agree', async () => {
 
   assert.equal(quote.body.data.deliveryFee, 1150);
   assert.equal(quote.body.data.weightSurcharge, 50);
-  assert.equal(quote.body.data.itemSurcharge, 150); // quantity 4
+  assert.equal(quote.body.data.itemSurcharge, 750); // quantity 4
   assert.equal(order.status, 201);
   assert.equal(order.body.data.total, quote.body.data.total);
   assert.equal(order.body.data.deliveryFee, quote.body.data.deliveryFee);
@@ -495,7 +495,7 @@ test('GET /api/delivery/tariffs exposes 58 wilayas, 10 unpriced, weight rule and
   assert.equal(body.data.wilayas.filter((wilaya) => !wilaya.available).length, 10);
   assert.deepEqual(body.data.unconfiguredWilayas, ['49', '50', '51', '52', '53', '54', '55', '56', '57', '58']);
   assert.deepEqual(body.data.weightRule, { freeKg: 5, stepKg: 5, feePerStep: 50 });
-  assert.equal(body.data.extraItemFee, 50);
+  assert.equal(body.data.extraItemFee, 250);
   const alger = body.data.wilayas.find((wilaya) => wilaya.code === '16');
   assert.deepEqual([alger.home, alger.stopDesk, alger.zone], [500, 450, 0]);
 });

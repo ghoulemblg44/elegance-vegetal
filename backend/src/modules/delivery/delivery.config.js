@@ -113,16 +113,16 @@ const WEIGHT_RULE_DEFAULTS = Object.freeze({
 
 /**
  * Extra-item delivery rule: the first unit is included in the wilaya base fee;
- * each additional unit adds `feePerExtraItem` DA.
+ * each additional unit adds `feePerExtraItem` DA (default 250).
  *
  *   1 item  -> 0
- *   2 items -> 1 x feePerExtraItem
- *   3 items -> 2 x feePerExtraItem
+ *   2 items -> 250 DA
+ *   3 items -> 500 DA
  *
  * Override with DELIVERY_EXTRA_ITEM_FEE, or change it in the admin panel
  * (stored in MongoDB and preferred over this default).
  */
-const EXTRA_ITEM_FEE_DEFAULT = 50;
+const EXTRA_ITEM_FEE_DEFAULT = 250;
 
 const positiveNumber = (raw, fallback, { allowZero = false } = {}) => {
   if (raw === undefined || raw === null || String(raw).trim() === '') {

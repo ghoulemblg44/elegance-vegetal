@@ -225,9 +225,8 @@ const initCheckout = () => {
     deliveryMessage.textContent = "";
 
     if (quoteUsable()) {
-      const deliveryTotal =
-        Number(quote.deliveryFee || 0) + Number(quote.itemSurcharge || 0) + Number(quote.weightSurcharge || 0);
-      deliveryValue.textContent = formatPrice(deliveryTotal);
+      // Each row is additive: base wilaya fee + item surcharge + weight surcharge = delivery part of total.
+      deliveryValue.textContent = formatPrice(quote.deliveryFee);
       totalValue.textContent = formatPrice(quote.total);
       if (itemSurchargeRow && Number(quote.itemSurcharge) > 0) {
         itemSurchargeRow.hidden = false;
@@ -259,15 +258,10 @@ const initCheckout = () => {
       deliveryMessage.textContent = "Choisissez votre wilaya pour afficher le prix de la livraison.";
     }
 
-    // Prices next to each delivery mode (wilaya base + extra items; weight is shown separately).
-    const itemExtra = quoteUsable() ? Number(quote.itemSurcharge || 0) : 0;
+    // Base wilaya fee next to each mode; extras are listed separately in the summary.
     methodFeeNodes.forEach((node) => {
       const base = quote && quote.options ? quote.options[node.dataset.deliveryFee] : null;
-      if (base == null || !Number.isFinite(Number(base))) {
-        node.textContent = "";
-        return;
-      }
-      node.textContent = `· ${formatPrice(Number(base) + itemExtra)}`;
+      node.textContent = base == null || !Number.isFinite(Number(base)) ? "" : `· ${formatPrice(base)}`;
     });
 
     updateSubmitState();
@@ -349,10 +343,9 @@ const initCheckout = () => {
       )
       .join("");
     page.querySelector("[data-success-subtotal]").textContent = formatPrice(order.subtotal);
+    page.querySelector("[data-success-fee]").textContent = formatPrice(order.deliveryFee);
     const itemSurcharge = Number(order.itemSurcharge) || 0;
     const surcharge = Number(order.weightSurcharge) || 0;
-    const deliveryTotal = Number(order.deliveryFee || 0) + itemSurcharge + surcharge;
-    page.querySelector("[data-success-fee]").textContent = formatPrice(deliveryTotal);
     const itemSurchargeSuccess = page.querySelector("[data-success-item-surcharge-row]");
     if (itemSurchargeSuccess) {
       itemSurchargeSuccess.hidden = itemSurcharge <= 0;

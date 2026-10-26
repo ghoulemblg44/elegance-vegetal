@@ -19,7 +19,7 @@ const tariffRowSchema = new mongoose.Schema(
 const deliverySettingsSchema = new mongoose.Schema(
   {
     key: { type: String, required: true, unique: true, default: 'delivery' },
-    extraItemFee: { type: Number, min: 0, default: 50 },
+    extraItemFee: { type: Number, min: 0, default: 250 },
     tariffs: { type: [tariffRowSchema], default: [] },
   },
   { timestamps: true }

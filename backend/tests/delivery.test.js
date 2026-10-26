@@ -217,28 +217,28 @@ test('delivery price = base fee + weight surcharge (+ item surcharge when provid
   const far = fee('40', 'stop_desk', 12);
   assert.equal(far.deliveryTotal, 800);
 
-  // Alger, home, 0 kg, 3 items -> 500 + 0 + 2*50
+  // Alger, home, 0 kg, 3 items -> 500 + 0 + 2*250
   const multi = calc.calculateDelivery({
     wilayaCode: '16',
     deliveryMethod: 'home',
     totalWeightKg: 0,
     itemCount: 3,
   });
-  assert.equal(multi.itemSurcharge, 100);
-  assert.equal(multi.deliveryTotal, 600);
+  assert.equal(multi.itemSurcharge, 500);
+  assert.equal(multi.deliveryTotal, 1000);
 });
 
-test('extra-item surcharge: first unit free, +50 DA per additional unit', () => {
+test('extra-item surcharge: first unit free, +250 DA per additional unit', () => {
   assert.equal(calc.calculateItemSurcharge(0).surcharge, 0);
   assert.equal(calc.calculateItemSurcharge(1).surcharge, 0);
-  assert.equal(calc.calculateItemSurcharge(2).surcharge, 50);
-  assert.equal(calc.calculateItemSurcharge(5).surcharge, 200);
+  assert.equal(calc.calculateItemSurcharge(2).surcharge, 250);
+  assert.equal(calc.calculateItemSurcharge(5).surcharge, 1000);
   assert.equal(calc.calculateItemSurcharge(3, 80).surcharge, 160);
   assert.throws(() => calc.calculateItemSurcharge(-1), RangeError);
 });
 
 test('extra-item fee is readable from environment variables', () => {
-  assert.equal(config.loadExtraItemFee({}), 50);
+  assert.equal(config.loadExtraItemFee({}), 250);
   assert.equal(config.loadExtraItemFee({ DELIVERY_EXTRA_ITEM_FEE: '75' }), 75);
   assert.equal(config.loadExtraItemFee({ DELIVERY_EXTRA_ITEM_FEE: '0' }), 0);
   assert.throws(() => config.loadExtraItemFee({ DELIVERY_EXTRA_ITEM_FEE: '-1' }), /Invalid delivery configuration/);

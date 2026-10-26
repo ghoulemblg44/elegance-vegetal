@@ -45,12 +45,47 @@
   margin-bottom: 1rem;
 }
 
+.order-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.order-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 16rem;
+}
+
+.order-thumb,
+.order-item__photo {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  border-radius: 0.55rem;
+  background: var(--color-cream-deep);
+  flex-shrink: 0;
+}
+
+.order-thumb--empty,
+.order-item__photo--empty {
+  display: inline-block;
+}
+
 .order-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 0.75rem;
+  align-items: center;
   padding: 0.7rem 0;
   border-top: 1px solid var(--color-border);
+}
+
+.order-item__photo {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 0.7rem;
 }
 
 .order-item:first-child {
@@ -172,6 +207,11 @@
     padding-right: 0.85rem;
     vertical-align: middle;
     white-space: nowrap;
+  }
+
+  [data-orders-page] .data-table td[data-label="Produits commandés"] {
+    white-space: normal;
+    min-width: 14rem;
   }
 }
 

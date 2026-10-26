@@ -9,7 +9,7 @@ const relatedCard = (product) => `
       </div>
       <div class="product-card__body">
         <h3>${escapeHtml(product.name)}</h3>
-        <p class="product-card__price">${formatPrice(product.price)}</p>
+        <p class="product-card__price">${formatProductPriceHtml(product)}</p>
         <p class="product-card__text">${escapeHtml(product.description)}</p>
       </div>
     </a>
@@ -65,7 +65,7 @@ const initProductDetail = async () => {
     image.alt = product.alt;
     category.textContent = product.category;
     name.textContent = product.name;
-    price.textContent = formatPrice(product.price);
+    price.innerHTML = formatProductPriceHtml(product);
     status.textContent = product.availabilityLabel;
     status.dataset.availability = product.availability;
     story.textContent = product.story;
