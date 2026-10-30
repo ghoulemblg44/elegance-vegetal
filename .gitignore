@@ -29,3 +29,5 @@ build/
 .cache/
 public/
 .vercel/
+.vercel
+.env*
